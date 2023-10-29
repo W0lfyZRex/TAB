@@ -171,7 +171,7 @@ public abstract class ScoreboardLine extends TabFeature implements Line {
         String prefixValue;
         String nameValue;
         String suffixValue;
-        if (text.length() <= (maxNameLength - playerNameStart.length())) {
+        if (text.length() <= (40 - playerNameStart.length())) {
             prefixValue = "";
             nameValue = playerNameStart + text;
             suffixValue = "";
