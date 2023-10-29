@@ -2,7 +2,9 @@ package me.neznamy.tab.shared.features.scoreboard.lines;
 
 import lombok.Getter;
 import lombok.NonNull;
+import me.neznamy.tab.shared.TAB;
 import me.neznamy.tab.shared.chat.EnumChatFormat;
+import me.neznamy.tab.shared.chat.IChatBaseComponent;
 import me.neznamy.tab.api.scoreboard.Line;
 import me.neznamy.tab.shared.features.types.TabFeature;
 import me.neznamy.tab.shared.platform.Scoreboard;
@@ -171,22 +173,18 @@ public abstract class ScoreboardLine extends TabFeature implements Line {
         String prefixValue;
         String nameValue;
         String suffixValue;
-        if (text.length() <= (40 - playerNameStart.length())) {
-            prefixValue = "";
-            nameValue = playerNameStart + text;
-            suffixValue = "";
-        } else {
-            String[] prefixOther = split(text, 16);
-            prefixValue = prefixOther[0];
-            String other = prefixOther[1];
-            if (playerNameStart.length() > 0) {
-                other = playerNameStart + EnumChatFormat.getLastColors(prefixValue) + other;
-            }
-            String[] nameSuffix = split(other, other.length() - 16);
-            nameValue = nameSuffix[0];
-            suffixValue = nameSuffix[1];
+        String[] prefixOther = split(text, 16);
+        prefixValue = prefixOther[0];
+        String other = prefixOther[1];
+        if (playerNameStart.length() > 0) {
+            other = playerNameStart + EnumChatFormat.getLastColors(prefixValue) + other;
         }
+        String[] nameSuffix = split(other, other.length() - 16);
+        nameValue = nameSuffix[0];
+        suffixValue = nameSuffix[1];
+        TAB.getInstance().getPlatform().logWarn(new IChatBaseComponent("LINE? " + nameValue + " " + prefixValue + "  " + suffixValue + " (length: " + nameValue.length() + " " + prefixValue.length() + " " + suffixValue.length() + ")"));
         return new String[]{prefixValue, nameValue, suffixValue};
+        
     }
 
     public boolean isShownTo(@NonNull TabPlayer player) {
