@@ -35,7 +35,7 @@ public class StaticLine extends ScoreboardLine {
         super.text = text;
         String legacy = RGBUtils.getInstance().convertRGBtoLegacy(this.text);
         //1.8+
-        String[] v18 = splitText(getPlayerName(lineNumber), legacy, 40);
+        String[] v18 = splitText(getPlayerName(lineNumber), legacy, 999);
         prefix = v18[0];
         name = v18[1];
         suffix = v18[2];

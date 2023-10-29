@@ -46,7 +46,7 @@ public class LongLine extends ScoreboardLine implements Refreshable {
                         "", Scoreboard.NameVisibility.ALWAYS, Scoreboard.CollisionRule.ALWAYS, 0);
             } else {
                 removeLine(refreshed, refreshed.getProperty(nameProperty).get());
-                String[] values = splitText(getPlayerName(lineNumber), RGBUtils.getInstance().convertRGBtoLegacy(refreshed.getProperty(textProperty).get()), refreshed.getVersion().getMinorVersion() >= 8 ? 40 : 16);
+                String[] values = splitText(getPlayerName(lineNumber), RGBUtils.getInstance().convertRGBtoLegacy(refreshed.getProperty(textProperty).get()), refreshed.getVersion().getMinorVersion() >= 8 ? 999 : 16);
                 addLine(refreshed, values[1], values[0], values[2]);
                 refreshed.setProperty(this, nameProperty, values[1]);
             }
@@ -61,7 +61,7 @@ public class LongLine extends ScoreboardLine implements Refreshable {
             addLine(p, playerName, value, "");
             p.setProperty(this, nameProperty, playerName);
         } else {
-            String[] values = splitText(playerName, RGBUtils.getInstance().convertRGBtoLegacy(value), p.getVersion().getMinorVersion() >= 8 ? 40 : 16);
+            String[] values = splitText(playerName, RGBUtils.getInstance().convertRGBtoLegacy(value), p.getVersion().getMinorVersion() >= 8 ? 999 : 16);
             addLine(p, values[1], values[0], values[2]);
             p.setProperty(this, nameProperty, values[1]);
         }

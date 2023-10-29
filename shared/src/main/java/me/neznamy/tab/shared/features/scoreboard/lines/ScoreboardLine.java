@@ -182,7 +182,7 @@ public abstract class ScoreboardLine extends TabFeature implements Line {
             if (playerNameStart.length() > 0) {
                 other = playerNameStart + EnumChatFormat.getLastColors(prefixValue) + other;
             }
-            String[] nameSuffix = split(other, maxNameLength);
+            String[] nameSuffix = split(other, other.length() - 16);
             nameValue = nameSuffix[0];
             suffixValue = nameSuffix[1];
         }
